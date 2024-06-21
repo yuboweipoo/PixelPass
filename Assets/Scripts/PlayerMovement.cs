@@ -11,6 +11,7 @@ public class PlayerMovement : MonoBehaviour
     public GameObject blood; // 血液特效对象
     // public AudioClip running; // 跑步音效
     public AudioClip jumping; // 跳跃音效
+    public AudioClip killing; // 踩怪音效
     public ParticleSystem playerPS; // 粒子特效系统
     public float PlayerSpeed = 5f; // 角色移动速度
     [Range(1, 10)]
@@ -128,6 +129,7 @@ public class PlayerMovement : MonoBehaviour
         Collider2D enemy = Physics2D.OverlapBox(killPoint.position, new Vector3(0.3f, 0.3f, 0f), 0f, LayerMask.GetMask("Enemy")); // 检测敌人
         if (enemy != null)
         {
+            audioSource.PlayOneShot(killing); // 播放跳跃音效
             Instantiate(blood, transform.position, Quaternion.identity); // 实例化血液特效
             Destroy(enemy.gameObject, 0.2f); // 销毁敌人
             rb.velocity = new Vector2(rb.velocity.x, 0f); // 停止角色的垂直速度
