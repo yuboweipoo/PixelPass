@@ -21,7 +21,7 @@ public class Fruits : MonoBehaviour
             audio.clip = collect;
             audio.Play();
             Destroy(collision.gameObject);
-            Debug.LogFormat("香蕉:{0}", ++banans);
+            ++banans;
             bananText.text = "香蕉:" + banans;
         }
     }

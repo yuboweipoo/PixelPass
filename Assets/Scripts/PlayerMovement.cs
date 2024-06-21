@@ -48,7 +48,9 @@ public class PlayerMovement : MonoBehaviour
         moveJump = Input.GetButtonDown("Jump"); // 检测跳跃按键按下
         jumpHold = Input.GetButton("Jump"); // 检测跳跃按键按住
 
-        if (moveJump && jumpCount > 0)
+        if(Input.GetKey(KeyCode.Space) && Input.GetKey(KeyCode.S)){
+            // 修复无法下落的问题，如果同时按下空格和下键，就什么都不做
+        }else if (moveJump && jumpCount > 0)
         {
             isJump = true; // 设置跳跃状态
             PPS(); // 播放粒子特效
